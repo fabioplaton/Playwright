@@ -1,0 +1,45 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  
+  await page.goto('https://www.ryanair.com/pt/pt');
+  await page.getByRole('button', { name: 'Sim, concordo' }).click();
+  await page.getByPlaceholder('Partida').click();
+  await page.getByLabel('Limpar seleção').click();
+  await page.getByPlaceholder('Partida').click();
+  await page.getByPlaceholder('Partida').fill('lisboa');
+  await page.getByRole('button', { name: 'Lisboa' }).click();
+  await page.getByPlaceholder('Destino').fill('madrid');
+  await page.getByRole('button', { name: 'Madrid' }).click();
+  await page.getByText('18').first().click();
+  await page.getByText('25').nth(1).click();
+  await page.locator('.counter__button-wrapper--enabled').first().click();
+  await page.locator('ry-checkbox div').nth(1).click();
+  await page.getByLabel('Pesquisar').click();
+  await page.locator('flight-card-summary').filter({ hasText: '2 lugares restantes com este' }).getByRole('button').click();
+  await page.getByRole('button', { name: 'Selecionar' }).click();
+  await page.getByRole('columnheader', { name: 'Image that represents standard fare Basic Viaja sem peso Continuar para € 271 ,' }).locator('div').nth(4).click();
+  await page.getByRole('button', { name: 'Continuar com Basic' }).click();
+  await page.getByRole('button', { name: 'Iniciar sessão mais tarde' }).click();
+  await page.locator('pax-passenger').filter({ hasText: 'Passageiro 1 Adulto Título -' }).getByRole('button').click();
+  await page.getByRole('button', { name: 'Sr.', exact: true }).click();
+  await page.locator('input[name="form\\.passengers\\.ADT-0\\.name"]').click();
+  await page.locator('input[name="form\\.passengers\\.ADT-0\\.name"]').fill('Fabio');
+  await page.locator('input[name="form\\.passengers\\.ADT-0\\.name"]').press('Tab');
+  await page.locator('[id="form\\.passengers\\.ADT-0\\.surname"]').fill('Lopes');
+  await page.getByRole('button', { name: '-', exact: true }).click();
+  await page.getByRole('button', { name: 'Sr.ª' }).click();
+  await page.locator('input[name="form\\.passengers\\.ADT-1\\.name"]').click();
+  await page.locator('input[name="form\\.passengers\\.ADT-1\\.name"]').fill('Milla');
+  await page.locator('input[name="form\\.passengers\\.ADT-1\\.name"]').press('Tab');
+  await page.locator('[id="form\\.passengers\\.ADT-1\\.surname"]').fill('Lopes');
+  await page.getByRole('button', { name: 'Continuar' }).click();
+  await page.locator('bags-small-bag-pax-control label').click();
+  await page.getByRole('button', { name: 'Continuar' }).click();
+  await page.getByRole('button', { name: 'undefined Opção 2: Selecionar' }).click();
+  await page.getByRole('button', { name: 'Continuar sem um lugar' }).click();
+  await page.getByRole('button', { name: 'Continuar com a atribuição' }).click();
+  await page.getByRole('button', { name: 'Não, obrigado' }).click();
+  await page.getByRole('button', { name: 'Continuar' }).click();
+  await page.getByRole('button', { name: 'Continuar' }).click();
+});
