@@ -75,7 +75,7 @@ test.describe('funcionalidade de add, remover e checkout do carrinho', () =>{
     await expect(page.locator('#shopping_cart_container')).toContainText('2');
   });
 
-  test('test', async ({ page }) => {
+  test('test finalizando compra', async ({ page }) => {
     await page.locator('div').filter({ hasText: /^\$29\.99ADD TO CART$/ }).getByRole('button').click();
     await page.getByRole('button', { name: 'ADD TO CART' }).nth(1).click();
     await page.getByRole('link', { name: '2' }).click();
