@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+//teste só pode ser realizado até o dia 23/08/2024.
 test('test', async ({ page }) => {
   await page.goto('https://www.ryanair.com/pt/pt');
   await page.getByRole('button', { name: 'Sim, concordo' }).click();
